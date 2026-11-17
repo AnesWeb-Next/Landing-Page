@@ -1,0 +1,259 @@
+/* variables */
+:root {
+  --primary-color: #ffdf00;
+  --primary-color-val: 255, 223, 0;
+  --primary-color-hover: rgba(255, 223, 0, 0.08);
+  --secondary-color: 27, 27, 27;
+  --base-color: #151515;
+  --neutral-color: #ffffff;
+}
+
+/* global content */
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  min-height: 100vh;
+  font-family: "CabinetGrotesk-Variable", "Inter", "Roboto", "Arial",
+    "sans-serif";
+  font-weight: 400;
+  color: var(--neutral-color);
+  background-color: var(--base-color);
+  overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  width: 100%;
+}
+
+main span {
+  color: var(--primary-color);
+}
+
+/* buttons */
+
+.btn {
+  font-weight: 800;
+  background-color: var(--primary-color);
+  color: var(--base-color);
+  border-radius: 8px;
+  padding: 1.125rem 2rem;
+  text-transform: capitalize;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-hover);
+  color: var(--neutral-color);
+}
+
+.btn-base {
+  background-color: var(--base-color);
+  color: var(--neutral-color);
+}
+
+.btn-base:hover {
+  background-color: rgb(var(--secondary-color));
+}
+
+.btn-small {
+  padding: 0.375rem 1rem;
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 2.75rem;
+  line-height: 2.25rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+  line-height: 1.75rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  line-height: 1rem;
+  font-weight: 400;
+  background-color: var(--primary-color-hover);
+  border-radius: 50px;
+  padding: 0.5rem 2rem;
+  color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 0.5rem;
+  /* position: relative; */
+}
+
+h4::before {
+  content: " ";
+  background-image: url("../images/logo.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1rem;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+h5 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  max-width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* tabs */
+.tabs {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  border: 1px solid transparent;
+  padding-bottom: 1rem;
+  transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+  word-break: keep-all;
+  flex-shrink: 0;
+}
+
+.tab-active,
+.tab:hover {
+  border-bottom-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.tab-content {
+  display: flex;
+  width: 100%;
+}
+
+.tab-pane {
+  display: none;
+  width: 100%;
+}
+.tab-pane.active {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+  h1 {
+    font-size: 3.5rem;
+    line-height: 3.25rem;
+  }
+  h2 {
+    font-size: 2rem;
+    line-height: 1.75rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .tabs {
+    gap: 1rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+  h1 {
+    font-size: 4rem;
+    line-height: 3.75rem;
+  }
+  h2 {
+    font-size: 2.75rem;
+    line-height: 2.5rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* Animation  */
+@keyframes tape-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+[data-observe-me] {
+  opacity: 0;
+  transform: translateY(40px);
+  visibility: hidden;
+}
+
+[data-observe-me][visible] {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-observe-me][data-slide="left"] {
+  transform: translateX(-40px);
+}
+[data-observe-me][data-slide="left"][visible] {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+[data-observe-me][data-slide="right"] {
+  transform: translateX(40px);
+}
+[data-observe-me][data-slide="right"][visible] {
+  transform: translateX(0);
+  opacity: 1;
+}
